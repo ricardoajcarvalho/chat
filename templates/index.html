@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple database example</title>
+</head>
+<body>
+
+    <h1>Chat website</h1>
+
+    <form action="/add-message" method="post">
+        <input name="username" type="text" placeholder="Introduz o teu nome">
+        <br><br>
+        <textarea name="mensagem" placeholder="Introduz a mensagem" rows="10" cols="30"></textarea>
+        <br><br>
+        <button type="submit">Enviar</button>
+    </form>
+    <h1>Mensagens</h1>
+
+    {% for mensagem in mensagens %}
+    <p>
+        {{mensagem.author}}: {{mensagem.text}}
+    </p>
+    {% endfor %}
+
+</body>
+</html>
