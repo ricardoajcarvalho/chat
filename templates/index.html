@@ -5,23 +5,33 @@
     <title>Simple database example</title>
 </head>
 <body>
+    {% if name_user %}
+        <h1> Olá {{name_user}}</h1>
 
-    <h1>Chat website</h1>
+        <h1>Chat website</h1>
 
-    <form action="/add-message" method="post">
-        <input name="username" type="text" placeholder="Introduz o teu nome">
-        <br><br>
-        <textarea name="mensagem" placeholder="Introduz a mensagem" rows="10" cols="30"></textarea>
-        <br><br>
-        <button type="submit">Enviar</button>
-    </form>
-    <h1>Mensagens</h1>
+        <form action="/add-message" method="post">
+            <textarea name="mensagem" placeholder="Introduz a mensagem" rows="10" cols="30"></textarea>
+            <br><br>
+            <button type="submit">Enviar</button>
+        </form>
+        <h1>Mensagens</h1>
 
-    {% for mensagem in mensagens %}
-    <p>
-        {{mensagem.author}}: {{mensagem.text}}
-    </p>
-    {% endfor %}
+        {% for mensagem in mensagens %}
+        <p>
+            {{mensagem.author}}: {{mensagem.text}}
+        </p>
+        {% endfor %}
+
+    {% else %}
+     <h1>Login</h1>
+        <form method="post" action="/login">
+            <input type="text" name="user-name" placeholder="Introduz o teu nome"><br><br>
+            <input type="email" name="user-email" placeholder="Introduz o teu email" autocomplete="on"><br>
+
+            <button>Submit</button>
+        </form>
+    {% endif %}
 
 </body>
 </html>
