@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Simple database example</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
+
     {% if name_user %}
-        <h1> Olá {{name_user}}</h1>
+        <h1> Olá <a href="/profile">{{name_user}}</a></h1>
 
         <h1>Chat website</h1>
 
@@ -24,14 +21,13 @@
         {% endfor %}
 
     {% else %}
-     <h1>Login</h1>
+     <h1>Login Ou Registar</h1>
         <form method="post" action="/login">
             <input type="text" name="user-name" placeholder="Introduz o teu nome"><br><br>
-            <input type="email" name="user-email" placeholder="Introduz o teu email" autocomplete="on"><br>
-
+            <input type="email" name="user-email" placeholder="Introduz o teu email" autocomplete="on"><br><br>
+            <input type="password" name="user-password" placeholder="Introduz a tua password"><br>
             <button>Submit</button>
         </form>
     {% endif %}
 
-</body>
-</html>
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}SmartNinja Chat Profile{% endblock title %}
+
+{% block content %}
+
+    <p>
+        <strong>Your name:</strong> {{ user.name }}
+    </p>
+    <p>
+        <strong>Your email:</strong> {{ user.email }}
+    </p>
+
+    <p>
+        <a href="/profile/edit">Edit profile</a>
+    </p>
+
+{% endblock content %}
