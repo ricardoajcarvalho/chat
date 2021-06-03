@@ -23,6 +23,12 @@ def index():
 
     return render_template("index.html", mensagens=mensagens, name_user=name_user)
 
+@app.route("/logout", methods=["GET"])
+def logout():
+    response = make_response(redirect(url_for('index')))
+    response.delete_cookie("session_token")
+    return response
+
 @app.route("/login", methods=["POST"])
 def login():
     name = request.form.get("user-name")
@@ -118,7 +124,6 @@ def profile_delete():
 @app.route("/users", methods=["GET"])
 def all_users():
     users = db.query(User).all()
-
     return render_template("users.html", users=users)
 
 
